@@ -12,7 +12,7 @@
 name: Update Checker
 
 env:
-  REPO_URL: https://github.com/cachenow/OPackages
+  REPO_URL: https://github.com/cachenow/Opackages_Arm
   REPO_BRANCH: main
 
 on:
