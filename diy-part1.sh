@@ -10,4 +10,4 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 
-echo 'src-git springwrt https://github.com/cachenow/OPackages' >>feeds.conf.default
+echo 'src-git springwrt https://github.com/cachenow/Opackages_Arm' >>feeds.conf.default
