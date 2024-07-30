@@ -35,32 +35,17 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Check space usage
-      if: (!cancelled())
-      run: df -hT
-
-    - name: Remove unnecessary packages
-      run: |
-        sudo apt-get remove --purge -y \
-          azure-cli \
-          google-cloud-sdk \
-          kubectl \
-          gh \
-          mono-devel \
-          && sudo apt-get autoremove -y
-
-    - name: Clean up cache and temporary files
-      run: |
-        sudo apt-get clean
-        sudo rm -rf /var/lib/apt/lists/*
-        sudo rm -rf /tmp/*
-        sudo rm -rf /var/tmp/*
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        retain_days: 3
+        keep_minimum_runs: 0
 
     - name: Check space usage
       if: (!cancelled())
@@ -211,12 +196,6 @@ jobs:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
-
-    - name: Delete workflow runs
-      uses: GitRML/delete-workflow-runs@main
-      with:
-        retain_days: 7
-        keep_minimum_runs: 0
 
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@v0.1.0
