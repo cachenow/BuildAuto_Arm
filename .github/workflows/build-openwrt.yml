@@ -35,11 +35,36 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
       uses: actions/checkout@main
+
+    - name: Check space usage
+      if: (!cancelled())
+      run: df -hT
+
+    - name: Remove unnecessary packages
+      run: |
+        sudo apt-get remove --purge -y \
+          azure-cli \
+          google-cloud-sdk \
+          kubectl \
+          gh \
+          mono-devel \
+          && sudo apt-get autoremove -y
+
+    - name: Clean up cache and temporary files
+      run: |
+        sudo apt-get clean
+        sudo rm -rf /var/lib/apt/lists/*
+        sudo rm -rf /tmp/*
+        sudo rm -rf /var/tmp/*
+
+    - name: Check space usage
+      if: (!cancelled())
+      run: df -hT
 
     - name: Initialization environment
       env:
