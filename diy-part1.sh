@@ -10,4 +10,8 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 
+# SelfStorage
 echo 'src-git springwrt https://github.com/cachenow/Opackages_Arm' >>feeds.conf.default
+
+# iStore
+echo "src-git istore https://github.com/linkease/istore;main" >> feeds.conf.default
