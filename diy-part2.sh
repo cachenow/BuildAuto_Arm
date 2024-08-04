@@ -20,20 +20,20 @@ sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
 #sed -i 's/^KERNEL_PATCHVER:=.*/KERNEL_PATCHVER:=5.15/' target/linux/rockchip/Makefile
 
 # 取消bootstrap为默认主题
-sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
-sed -i 's/luci-theme-bootstrap/luci-theme-argon-18.06/g' feeds/luci/collections/luci/Makefile
-sed -i 's/luci-theme-bootstrap/luci-theme-argon-18.06/g' feeds/luci/collections/luci-nginx/Makefile
+#sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
+#sed -i 's/luci-theme-bootstrap/luci-theme-argon-18.06/g' feeds/luci/collections/luci/Makefile
+#sed -i 's/luci-theme-bootstrap/luci-theme-argon-18.06/g' feeds/luci/collections/luci-nginx/Makefile
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-nginx/Makefile
 
 # 删除lede源码对软件源的替换
-sed -i '/sed -i '\''s#downloads.openwrt.org#mirrors.tencent.com\/lede#g'\'' \/etc\/opkg\/distfeeds.conf/d' package/lean/default-settings/files/zzz-default-settings
+#sed -i '/sed -i '\''s#downloads.openwrt.org#mirrors.tencent.com\/lede#g'\'' \/etc\/opkg\/distfeeds.conf/d' package/lean/default-settings/files/zzz-default-settings
 
 # 加入istore软件源，\x27是单引号的十六进制
-sed -i '/exit 0/i sed -i \x27\$a src/gz istore https://istore.linkease.com/repo/aarch64_cortex-a53/nas/\x27 /etc/opkg/distfeeds.conf' package/lean/default-settings/files/zzz-default-settings
+#sed -i '/exit 0/i sed -i \x27\$a src/gz istore https://istore.linkease.com/repo/aarch64_cortex-a53/nas/\x27 /etc/opkg/distfeeds.conf' package/lean/default-settings/files/zzz-default-settings
 
 # 加入作者信息
-sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='SpringWRT-$(date +%Y%m%d)'/g" package/lean/default-settings/files/zzz-default-settings
+#sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='SpringWRT-$(date +%Y%m%d)'/g" package/lean/default-settings/files/zzz-default-settings
 
 # 更改主机名
 sed -i "s/hostname='.*'/hostname='SpringWRT'/g" package/base-files/files/bin/config_generate
