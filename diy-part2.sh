@@ -14,7 +14,7 @@
 #sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 
 # 修改默认IP
-sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
+#sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
 
 # 修改Linux内核为5.15
 #sed -i 's/^KERNEL_PATCHVER:=.*/KERNEL_PATCHVER:=5.15/' target/linux/rockchip/Makefile
